@@ -1,0 +1,253 @@
+1. public class ArraySumAndAverage {
+    public static void main(String[] args) {
+        int[] array = {10, 20, 30, 40, 50};
+        int sum = 0;
+        for (int i = 0; i < array.length; i++) {
+            sum += array[i];
+        }
+        double average = (double) sum / array.length;
+        System.out.println("Array: ");
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
+        }
+        System.out.println("\nSum of array elements: " + sum);
+        System.out.println("Average of array elements: " + average);
+    }
+}
+2. public class ArrayMinMax {
+    public static void main(String[] args) {
+        int[] array = {10, 20, 30, 40, 50, 5, 35};
+        int max = array[0];
+        int min = array[0];
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] > max) {
+                max = array[i];
+            }
+            if (array[i] < min) {
+                min = array[i];
+            }
+        }
+        System.out.println("Array: ");
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
+        }
+        System.out.println("\nMaximum value in the array: " + max);
+        System.out.println("Minimum value in the array: " + min);
+    }
+}
+3. import java.util.Scanner;
+public class ArraySearch {
+    public static void main(String[] args) {
+        int[] array = {1, 4, 34, 56, 7};
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the number to search: ");
+        int searchElement = scanner.nextInt();
+        int index = -1;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == searchElement) {
+                index = i;
+                break;
+            }
+        }
+        System.out.println("Index of the search element: " + index);
+        scanner.close();
+    }
+}
+4. public class ASCIItoChar {
+    public static void main(String[] args) {
+        int[] asciiArray = {65, 66, 67, 97, 98, 99, 48, 49, 50}; // Example ASCII values
+        System.out.print("Corresponding characters: ");
+        for (int i = 0; i < asciiArray.length; i++) {
+            char c = (char) asciiArray[i];
+            System.out.print(c);
+        }
+    }
+}
+5. import java.util.Arrays;
+public class LargestSmallestTwoNumbers {
+    public static void main(String[] args) {
+        int[] array = {10, 20, 5, 8, 25, 15};
+        Arrays.sort(array);
+        int largest1 = array[array.length - 1];
+        int largest2 = array[array.length - 2];
+        int smallest1 = array[0];
+        int smallest2 = array[1];
+        System.out.println("Largest two numbers: " + largest1 + ", " + largest2);
+        System.out.println("Smallest two numbers: " + smallest1 + ", " + smallest2);
+    }
+}
+6.import java.util.Arrays;
+
+public class SortArray {
+    public static void main(String[] args) {
+        int[] array = {10, 5, 8, 3, 12, 7};
+        Arrays.sort(array);
+        System.out.println("Sorted array:");
+        for (int num : array) {
+            System.out.print(num + " ");
+        }
+    }
+}
+7.import java.util.Arrays;
+public class RemoveDuplicatesFromArray {
+    public static void main(String[] args) {
+        int[] array = {12, 34, 12, 45, 67, 89};
+        Arrays.sort(array);
+        int uniqueElements = 1;
+        int newIndex = 1;
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] != array[i - 1]) {
+                array[newIndex] = array[i];
+                newIndex++;
+                uniqueElements++;
+            }
+        }
+        System.out.print("Output array: (");
+        for (int i = 0; i < uniqueElements; i++) {
+            System.out.print(array[i]);
+            if (i < uniqueElements - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println(")");
+    }
+}
+8. public class ArraySumIgnoring67 {
+    public static void main(String[] args) {
+        int[] array1 = {10, 3, 6, 1, 2, 7, 9};
+        int[] array2 = {7, 1, 2, 3, 6};
+        int[] array3 = {1, 6, 4, 7, 9};
+        System.out.println("Output 1: " + calculateSumIgnoring67(array1));
+        System.out.println("Output 2: " + calculateSumIgnoring67(array2));
+        System.out.println("Output 3: " + calculateSumIgnoring67(array3));
+    }
+
+    // Function to calculate the sum of elements ignoring numbers between 6 and 7
+    public static int calculateSumIgnoring67(int[] array) {
+        int sum = 0;
+        boolean ignore = false;
+        for (int num : array) {
+            if (num == 6) {
+                ignore = true;
+                continue;
+            } else if (num == 7) {
+                ignore = false;
+                continue;
+            }
+
+            if (!ignore) {
+                sum += num;
+            }
+        }
+        return sum;
+    }
+}
+9. import java.util.Arrays;
+
+public class RemoveTenFromArray {
+    public static void main(String[] args) {
+        int[] array1 = {1, 10, 10, 2};
+        int[] array2 = {10, 2, 10};
+        int[] array3 = {1, 99, 10};
+        System.out.println("Without Ten (" + Arrays.toString(array1) + ") -> " + Arrays.toString(withoutTen(array1)));
+        System.out.println("Without Ten (" + Arrays.toString(array2) + ") -> " + Arrays.toString(withoutTen(array2)));
+        System.out.println("Without Ten (" + Arrays.toString(array3) + ") -> " + Arrays.toString(withoutTen(array3)));
+    }
+    public static int[] withoutTen(int[] nums) {
+        int[] result = new int[nums.length];
+        int index = 0;
+        for (int num : nums) {
+            if (num != 10) {
+                result[index++] = num;
+            }
+        }
+        return result;
+    }
+}
+10. import java.util.Arrays;
+public class EvenOddArray {
+    public static void main(String[] args) {
+        int[] array1 = {1, 0, 1, 0, 0, 1, 1};
+        int[] array2 = {3, 3, 2};
+        int[] array3 = {2, 2, 2};
+        System.out.println("evenOdd(" + Arrays.toString(array1) + ") -> " + Arrays.toString(evenOdd(array1)));
+        System.out.println("evenOdd(" + Arrays.toString(array2) + ") -> " + Arrays.toString(evenOdd(array2)));
+        System.out.println("evenOdd(" + Arrays.toString(array3) + ") -> " + Arrays.toString(evenOdd(array3)));
+    }
+    public static int[] evenOdd(int[] nums) {
+        int[] result = new int[nums.length];
+        int evenIndex = 0;
+        int oddIndex = nums.length - 1;
+        for (int num : nums) {
+            if (num % 2 == 0) {
+                result[evenIndex++] = num;
+            } else {
+                result[oddIndex--] = num;
+            }
+        }
+        return result;
+    }
+}
+11. public class OnlyOneFour {
+    public static void main(String[] args) {
+        int[] array1 = {1, 4, 1, 4};
+        int[] array2 = {1, 4, 2, 4};
+        int[] array3 = {1, 1};
+        System.out.println("only14(" + arrayToString(array1) + ") -> " + only14(array1));
+        System.out.println("only14(" + arrayToString(array2) + ") -> " + only14(array2));
+        System.out.println("only14(" + arrayToString(array3) + ") -> " + only14(array3));
+    }
+    public static boolean only14(int[] nums) {
+        for (int num : nums) {
+            if (num != 1 && num != 4) {
+                return false;
+            }
+        }
+        return true;
+    }
+    public static String arrayToString(int[] nums) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for (int i = 0; i < nums.length; i++) {
+            sb.append(nums[i]);
+            if (i < nums.length - 1) {
+                sb.append(", ");
+            }
+        }
+        sb.append("]");
+        return sb.toString();
+    }
+}
+12. import java.util.Arrays;
+public class MiddleWay {
+    public static void main(String[] args) {
+        int[] a1 = {1, 2, 3};
+        int[] b1 = {4, 5, 6};
+        int[] a2 = {7, 7, 7};
+        int[] b2 = {3, 8, 0};
+        int[] a3 = {5, 2, 9};
+        int[] b3 = {1, 4, 5};
+        System.out.println("middleway(" + arrayToString(a1) + ", " + arrayToString(b1) + ") -> " + arrayToString(middleWay(a1, b1)));
+        System.out.println("middleway(" + arrayToString(a2) + ", " + arrayToString(b2) + ") -> " + arrayToString(middleWay(a2, b2)));
+        System.out.println("middleway(" + arrayToString(a3) + ", " + arrayToString(b3) + ") -> " + arrayToString(middleWay(a3, b3)));
+    }
+    public static int[] middleWay(int[] a, int[] b) {
+        int[] result = new int[2];
+        result[0] = a[1];
+        result[1] = b[1];
+        return result;
+    }
+    public static String arrayToString(int[] array) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for (int i = 0; i < array.length; i++) {
+            sb.append(array[i]);
+            if (i != array.length - 1) {
+                sb.append(", ");
+            }
+        }
+        sb.append("]");
+        return sb.toString();
+    }
+}
+
