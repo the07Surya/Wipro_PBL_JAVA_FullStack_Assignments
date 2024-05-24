@@ -1,0 +1,34 @@
+1.public class CompanyDetails {
+    public static void main(String[] args) {
+        if (args.length != 2) {
+            System.out.println("Please provide exactly two arguments.");
+            return;
+        }
+        String companyName = args[0];
+        String city = args[1];
+        System.out.println(companyName + " Technologies " + city);
+    }
+}
+2.public class WelcomeMessage {
+    public static void main(String[] args) {
+        if (args.length != 1) {
+            System.out.println("Please provide exactly one argument.");
+            return;
+        }
+        String name = args[0];
+        System.out.println("Welcome " + name);
+    }
+}
+3.public class SumCalculator {
+    public static void main(String[] args) {
+        if (args.length != 2) {
+            System.out.println("Please provide exactly two arguments.");
+            return;
+        }
+        int num1 = Integer.parseInt(args[0]);
+        int num2 = Integer.parseInt(args[1]);
+        int sum = num1 + num2;
+        System.out.println("The sum of " + num1 + " and " + num2 + " is " + sum);
+    }
+}
+
