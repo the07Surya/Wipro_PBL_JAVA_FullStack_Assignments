@@ -1,0 +1,32 @@
+1.public class Box {
+    private double width;
+    private double height;
+    private double depth;
+    public Box(double width, double height, double depth) {
+        this.width = width;
+        this.height = height;
+        this.depth = depth;
+    }
+    public double calculateVolume() {
+        return width * height * depth;
+    }  
+    public static void main(String[] args) {
+        // Creating an object of the Box class with dimensions 3x4x5
+        Box box = new Box(3, 4, 5);
+        System.out.println("Volume of the box is: " + box.calculateVolume());
+    }
+}
+2. public class Calculator {
+    public static int powerInt(int num1, int num2) {
+        return (int) Math.pow(num1, num2);
+    }
+    public static double powerDouble(double num1, int num2) {
+        return Math.pow(num1, num2);
+    } 
+    public static void main(String[] args) {
+        int resultInt = Calculator.powerInt(2, 3);
+        System.out.println("2 raised to the power 3 is: " + resultInt);
+        double resultDouble = Calculator.powerDouble(2.5, 2);
+        System.out.println("2.5 raised to the power 2 is: " + resultDouble);
+    }
+}
