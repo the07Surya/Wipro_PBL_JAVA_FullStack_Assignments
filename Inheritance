@@ -1,0 +1,100 @@
+1.class Animal {
+    public void eat() {
+        System.out.println("Animal is eating");
+    }
+    public void sleep() {
+        System.out.println("Animal is sleeping");
+    }
+}
+class Bird extends Animal {
+    @Override
+    public void eat() {
+        System.out.println("Bird is eating");
+    }
+    
+    @Override
+    public void sleep() {
+        System.out.println("Bird is sleeping");
+    }
+    
+    public void fly() {
+        System.out.println("Bird is flying");
+    }
+}
+
+public class AnimalTest {
+    public static void main(String[] args) {
+        Animal animal = new Animal();
+        animal.eat();
+        animal.sleep();
+        Bird bird = new Bird();
+        bird.eat();
+        bird.sleep();
+        bird.fly();
+    }
+}
+2. Person.java
+     public class Person {
+    private String name; 
+    public Person(String name) {
+        this.name = name;
+    }   
+    public String getName() {
+        return name;
+    }   
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+  Employee.java
+    public class Employee extends Person {
+    private double annualSalary;
+    private int startYear;
+    private String nationalInsuranceNumber;   
+    public Employee(String name, double annualSalary, int startYear, String nationalInsuranceNumber) {
+        super(name);
+        this.annualSalary = annualSalary;
+        this.startYear = startYear;
+        this.nationalInsuranceNumber = nationalInsuranceNumber;
+    } 
+    public double getAnnualSalary() {
+        return annualSalary;
+    }
+    public void setAnnualSalary(double annualSalary) {
+        this.annualSalary = annualSalary;
+    } 
+    public int getStartYear() {
+        return startYear;
+    }
+    public void setStartYear(int startYear) {
+        this.startYear = startYear;
+    }
+    public String getNationalInsuranceNumber() {
+        return nationalInsuranceNumber;
+    }  
+    public void setNationalInsuranceNumber(String nationalInsuranceNumber) {
+        this.nationalInsuranceNumber = nationalInsuranceNumber;
+    }
+}
+   TestEmployee.java
+      public class TestEmployee {
+    public static void main(String[] args) {
+        Employee employee = new Employee("John Doe", 50000, 2020, "ABC123");   
+        // Testing getter methods
+        System.out.println("Employee Name: " + employee.getName());
+        System.out.println("Annual Salary: " + employee.getAnnualSalary());
+        System.out.println("Start Year: " + employee.getStartYear());
+        System.out.println("National Insurance Number: " + employee.getNationalInsuranceNumber());  
+        // Testing setter methods
+        employee.setName("Jane Doe");
+        employee.setAnnualSalary(60000);
+        employee.setStartYear(2019);
+        employee.setNationalInsuranceNumber("XYZ789");
+        
+        System.out.println("\nUpdated Employee Details:");
+        System.out.println("Employee Name: " + employee.getName());
+        System.out.println("Annual Salary: " + employee.getAnnualSalary());
+        System.out.println("Start Year: " + employee.getStartYear());
+        System.out.println("National Insurance Number: " + employee.getNationalInsuranceNumber());
+    }
+}
