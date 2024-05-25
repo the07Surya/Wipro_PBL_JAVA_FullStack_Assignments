@@ -1,0 +1,182 @@
+1.public class PalindromeChecker {
+    public static boolean isPalindromeString(String str) {
+        // Remove all non-alphanumeric characters and convert to lowercase
+        String cleanStr = str.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+
+        // Compare the string with its reverse
+        return cleanStr.equals(new StringBuilder(cleanStr).reverse().toString());
+    }
+    public static void main(String[] args) {
+        String str = "A man, a plan, a canal, Panama";    
+        if (isPalindromeString(str)) {
+            System.out.println("'" + str + "' is a palindrome.");
+        } else {
+            System.out.println("'" + str + "' is not a palindrome.");
+        }
+    }
+}
+2. public class ConcatenateStrings {
+    public static String concatenateAndLowercase(String str1, String str2) {
+        // Concatenate the strings
+        String result = str1 + str2;  
+        // Convert the result to lowercase
+        result = result.toLowerCase();    
+        // Check if there's a double character at the concatenation point
+        if (result.length() > 1 && result.charAt(str1.length()) == result.charAt(str1.length() - 1)) {
+            // If so, omit one of the characters
+            result = result.substring(0, str1.length()) + result.substring(str1.length() + 1);
+        }   
+        return result;
+    }
+    public static void main(String[] args) {
+        // Example usage
+        String str1 = "Sachin";
+        String str2 = "Tendulkar";
+        System.out.println("Input: " + str1 + ", " + str2);
+        System.out.println("Output: " + concatenateAndLowercase(str1, str2));
+
+        str1 = "Mark";
+        str2 = "Kate";
+        System.out.println("Input: " + str1 + ", " + str2);
+        System.out.println("Output: " + concatenateAndLowercase(str1, str2));
+    }
+}
+3.public class CopyFirstChars {
+    public static String copyFirstChars(String str) {
+        String firstTwoChars = str.substring(0, Math.min(str.length(), 2));
+        return firstTwoChars.repeat(str.length());
+    }
+    public static void main(String[] args) {
+        String input = "Wipro";
+        System.out.println("Input: " + input);
+        System.out.println("Output: " + copyFirstChars(input));
+    }
+}
+4.public class FirstHalfString {
+    public static String getFirstHalf(String str) {
+        if (str.length() % 2 == 0) {
+            return str.substring(0, str.length() / 2);
+        } else {
+            return null;
+        }
+    }
+    public static void main(String[] args) {
+        String input1 = "TomCat";
+        System.out.println("Input: " + input1);
+        System.out.println("Output: " + getFirstHalf(input1));
+        String input2 = "Apron";
+        System.out.println("Input: " + input2);
+        System.out.println("Output: " + getFirstHalf(input2));
+    }
+}
+5.public class RemoveFirstLastChars {
+    public static String removeFirstLastChars(String str) {
+        if (str.length() <= 2) {
+            return "";
+        } else {
+            return str.substring(1, str.length() - 1);
+        }
+    }
+    public static void main(String[] args) {
+        String input = "Suman";
+        System.out.println("Input: " + input);
+        System.out.println("Output: " + removeFirstLastChars(input));
+    }
+}
+6.public class ShortLongShort {
+    public static String shortLongShort(String a, String b) {
+        if (a.length() < b.length()) {
+            return a + b + a;
+        } else {
+            return b + a + b;
+        }
+    }
+    public static void main(String[] args) {
+        String a = "hi";
+        String b = "hello";
+        System.out.println("Input: a = " + a + ", b = " + b);
+        System.out.println("Output: " + shortLongShort(a, b));
+    }
+}
+7.public class RemoveX {
+    public static String removeX(String str) {
+        if (str.length() > 0 && str.charAt(0) == 'x') {
+            str = str.substring(1);
+        }
+        if (str.length() > 0 && str.charAt(str.length() - 1) == 'x') {
+            str = str.substring(0, str.length() - 1);
+        }
+        return str;
+    }
+    public static void main(String[] args) {
+        String input1 = "Hix";
+        String input2 = "America";
+        System.out.println("Input: " + input1);
+        System.out.println("Output: " + removeX(input1));
+        System.out.println("Input: " + input2);
+        System.out.println("Output: " + removeX(input2));
+    }
+}
+8. public class RemoveAdjacentChars {
+    public static String removeAdjacentChars(String str) {
+        // Find the index of the asterisk (*)
+        int index = str.indexOf('*');
+        
+        // If asterisk is found and not at the beginning or end of the string
+        if (index != -1 && index > 0 && index < str.length() - 1) {
+            // Remove the characters to the left and right of the asterisk
+            return str.substring(0, index - 1) + str.substring(index + 2);
+        } else {
+            // Return the original string if no asterisk or if it's at the beginning or end
+            return str;
+        }
+    }
+    public static void main(String[] args) {
+        // Example usage
+        String input = "ab*cd";
+        System.out.println("Input: " + input);
+        System.out.println("Output: " + removeAdjacentChars(input));
+    }
+}
+9. public class CombineStrings {
+    public static String combineStrings(String a, String b) {
+        StringBuilder result = new StringBuilder();
+        int i = 0, j = 0;
+        while (i < a.length() && j < b.length()) {
+            result.append(a.charAt(i++));
+            result.append(b.charAt(j++));
+        }
+        while (i < a.length()) {
+            result.append(a.charAt(i++));
+        }
+        while (j < b.length()) {
+            result.append(b.charAt(j++));
+        }
+        return result.toString();
+    }
+
+    public static void main(String[] args) {
+        // Example usage
+        String a = "Hello";
+        String b = "World";
+        System.out.println("Input: a = " + a + ", b = " + b);
+        System.out.println("Output: " + combineStrings(a, b));
+    }
+}
+10. public class RepeatLastCharacters {
+    public static void main(String[] args) {
+        String inputStr = "wipro";
+        int n = 3;
+        String outputStr = repeatLastCharacters(inputStr, n);
+        System.out.println(outputStr);
+    }
+    public static String repeatLastCharacters(String inputStr, int n) {
+        String lastChars = inputStr.substring(inputStr.length() - n);
+        StringBuilder repeatedLastChars = new StringBuilder();
+        for (int i = 0; i < n; i++) {
+            repeatedLastChars.append(lastChars);
+        }    
+        return repeatedLastChars.toString();
+    }
+}
+
