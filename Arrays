@@ -250,4 +250,64 @@ public class MiddleWay {
         return sb.toString();
     }
 }
-
+13.public class Sample {
+    public static void main(String[] args) {
+        if (args.length != 4) {
+            System.out.println("Please enter 4 integer numbers");
+            return;
+        }
+        int[][] array = new int[2][2];
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                array[i][j] = Integer.parseInt(args[i * 2 + j]);
+            }
+        }
+        System.out.println("The given array is:");
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                System.out.print(array[i][j] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println("The reverse of the array is:");
+        for (int i = 1; i >= 0; i--) {
+            for (int j = 1; j >= 0; j--) {
+                System.out.print(array[i][j] % 10); // Only the last digit is taken
+            }
+            System.out.println();
+        }
+    }
+}
+14. public class Sample {
+    public static void main(String[] args) {
+        // Checking if the correct number of arguments are provided
+        if(args.length != 9) {
+            System.out.println("Please enter 9 integer numbers");
+            return;
+        }
+        int[][] array = new int[3][3];
+        int index = 0;
+        for(int i = 0; i < 3; i++) {
+            for(int j = 0; j < 3; j++) {
+                array[i][j] = Integer.parseInt(args[index]);
+                index++;
+            }
+        }
+        System.out.println("The given array is:");
+        for(int i = 0; i < 3; i++) {
+            for(int j = 0; j < 3; j++) {
+                System.out.print(array[i][j] + " ");
+            }
+            System.out.println();
+        }
+        int max = array[0][0];
+        for(int i = 0; i < 3; i++) {
+            for(int j = 0; j < 3; j++) {
+                if(array[i][j] > max) {
+                    max = array[i][j];
+                }
+            }
+        }
+        System.out.println("The biggest number in the given array is " + max);
+    }
+}
