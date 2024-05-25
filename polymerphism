@@ -1,0 +1,100 @@
+1. // Fruit.java
+public class Fruit {
+    protected String name;
+    protected String taste;
+    protected String size;
+    public Fruit(String name, String taste, String size) {
+        this.name = name;
+        this.taste = taste;
+        this.size = size;
+    }
+    public void eat() {
+        System.out.println("Eating " + name + ". It tastes " + taste + ".");
+    }
+}
+// Apple.java
+public class Apple extends Fruit {
+    public Apple(String name, String size) {
+        super(name, "sweet", size);
+    }
+    @Override
+    public void eat() {
+        System.out.println("Eating " + name + ". It tastes " + taste + ".");
+    }
+}
+// Orange.java
+public class Orange extends Fruit {
+    public Orange(String name, String size) {
+        super(name, "sour", size);
+    }
+    @Override
+    public void eat() {
+        System.out.println("Eating " + name + ". It tastes " + taste + ".");
+    }
+}
+// Main.java (Example usage)
+public class Main {
+    public static void main(String[] args) {
+        Apple apple = new Apple("Apple", "medium");
+        apple.eat();
+
+        Orange orange = new Orange("Orange", "large");
+        orange.eat();
+    }
+}
+2. // Shape.java
+class Shape {
+    public void draw() {
+        System.out.println("Drawing Shape");
+    }
+    public void erase() {
+        System.out.println("Erasing Shape");
+    }
+}
+// Circle.java
+class Circle extends Shape {
+    @Override
+    public void draw() {
+        System.out.println("Drawing Circle");
+    }
+    @Override
+    public void erase() {
+        System.out.println("Erasing Circle");
+    }
+}
+// Triangle.java
+class Triangle extends Shape {
+    @Override
+    public void draw() {
+        System.out.println("Drawing Triangle");
+    }
+    @Override
+    public void erase() {
+        System.out.println("Erasing Triangle");
+    }
+}
+// Square.java
+class Square extends Shape {
+    @Override
+    public void draw() {
+        System.out.println("Drawing Square");
+    }
+    @Override
+    public void erase() {
+        System.out.println("Erasing Square");
+    }
+}
+// Main.java
+public class Main {
+    public static void main(String[] args) {
+        Shape circle = new Circle();
+        Shape square = new Square();
+        Shape triangle = new Triangle();
+        circle.draw();
+        circle.erase();
+        square.draw();
+        square.erase();
+        triangle.draw();
+        triangle.erase();
+    }
+}
