@@ -1,0 +1,330 @@
+1. Foundation.java
+     package testpackage;
+
+public class Foundation {
+    private int var1 = 1;
+    int var2 = 2; // default access
+    protected int var3 = 3;
+    public int var4 = 4;
+
+    public int getVar1() {
+        return var1;
+    }
+}
+TestAccess.java
+    import testpackage.Foundation;
+
+public class TestAccess {
+    public static void main(String[] args) {
+        Foundation foundation = new Foundation();
+
+        // Trying to access all variables
+        // System.out.println("var1 (private): " + foundation.var1); // This will cause a compile-time error
+        // Default access modifier allows access within the same package, so this will cause an error
+        // System.out.println("var2 (default): " + foundation.var2);
+        // Protected access modifier allows access within the same package and subclasses, so this will cause an error
+        // System.out.println("var3 (protected): " + foundation.var3);
+        System.out.println("var4 (public): " + foundation.var4);
+
+        // Accessing the private variable using a public getter method
+        System.out.println("var1 (private) accessed via getter: " + foundation.getVar1());
+    }
+}
+
+2. Compartment.java
+       package com.wipro.automobile.ship;
+
+public class Compartment {
+    private double height;
+    private double width;
+    private double breadth;
+    public Compartment(double height, double width, double breadth) {
+        this.height = height;
+        this.width = width;
+        this.breadth = breadth;
+    }
+    public double getHeight() {
+        return height;
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public double getBreadth() {
+        return breadth;
+    }
+    public double getVolume() {
+        return height * width * breadth;
+    }
+
+    @Override
+    public String toString() {
+        return "Compartment [height=" + height + ", width=" + width + ", breadth=" + breadth + "]";
+    }
+}
+Main.java
+   import com.wipro.automobile.ship.Compartment;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Compartment comp1 = new Compartment(10.5, 8.2, 5.3);
+        Compartment comp2 = new Compartment(12.0, 7.5, 6.1);
+        System.out.println(comp1);
+        System.out.println("Volume of comp1: " + comp1.getVolume());
+        
+        System.out.println(comp2);
+        System.out.println("Volume of comp2: " + comp2.getVolume());
+    }
+}
+3. Vehicle.java
+    package com.automobile;
+
+public abstract class Vehicle {
+    public abstract String getModelName();
+    public abstract String getRegistrationNumber();
+    public abstract String getOwnerName();
+}
+Hero.java
+ package com.automobile.twowheeler;
+
+import com.automobile.Vehicle;
+
+public class Hero extends Vehicle {
+    private String modelName;
+    private String registrationNumber;
+    private String ownerName;
+    private int speed;
+
+    public Hero(String modelName, String registrationNumber, String ownerName, int speed) {
+        this.modelName = modelName;
+        this.registrationNumber = registrationNumber;
+        this.ownerName = ownerName;
+        this.speed = speed;
+    }
+
+    @Override
+    public String getModelName() {
+        return modelName;
+    }
+
+    @Override
+    public String getRegistrationNumber() {
+        return registrationNumber;
+    }
+
+    @Override
+    public String getOwnerName() {
+        return ownerName;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void radio() {
+        System.out.println("Radio is now playing in the Hero vehicle.");
+    }
+}
+Honda.java
+   package com.automobile.twowheeler;
+
+import com.automobile.Vehicle;
+
+public class Honda extends Vehicle {
+    private String modelName;
+    private String registrationNumber;
+    private String ownerName;
+    private int speed;
+
+    public Honda(String modelName, String registrationNumber, String ownerName, int speed) {
+        this.modelName = modelName;
+        this.registrationNumber = registrationNumber;
+        this.ownerName = ownerName;
+        this.speed = speed;
+    }
+
+    @Override
+    public String getModelName() {
+        return modelName;
+    }
+
+    @Override
+    public String getRegistrationNumber() {
+        return registrationNumber;
+    }
+
+    @Override
+    public String getOwnerName() {
+        return ownerName;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void cdplayer() {
+        System.out.println("CD player is now playing in the Honda vehicle.");
+    }
+}
+TestVehicle.java
+     import com.automobile.twowheeler.Hero;
+import com.automobile.twowheeler.Honda;
+
+public class TestVehicle {
+    public static void main(String[] args) {
+        // Create instances of Hero and Honda
+        Hero hero = new Hero("Hero Splendor", "KA01AB1234", "John Doe", 60);
+        Honda honda = new Honda("Honda Shine", "KA01CD5678", "Jane Doe", 70);
+
+        // Test Hero methods
+        System.out.println("Hero Model: " + hero.getModelName());
+        System.out.println("Hero Registration Number: " + hero.getRegistrationNumber());
+        System.out.println("Hero Owner: " + hero.getOwnerName());
+        System.out.println("Hero Speed: " + hero.getSpeed());
+        hero.radio();
+
+        System.out.println();
+
+        // Test Honda methods
+        System.out.println("Honda Model: " + honda.getModelName());
+        System.out.println("Honda Registration Number: " + honda.getRegistrationNumber());
+        System.out.println("Honda Owner: " + honda.getOwnerName());
+        System.out.println("Honda Speed: " + honda.getSpeed());
+        honda.cdplayer();
+    }
+}
+4. Logan.java
+    package com.automobile.fourwheeler;
+
+import com.automobile.Vehicle;
+
+public class Logan extends Vehicle {
+    private String modelName;
+    private String registrationNumber;
+    private String ownerName;
+    private int speed;
+
+    public Logan(String modelName, String registrationNumber, String ownerName, int speed) {
+        this.modelName = modelName;
+        this.registrationNumber = registrationNumber;
+        this.ownerName = ownerName;
+        this.speed = speed;
+    }
+
+    @Override
+    public String getModelName() {
+        return modelName;
+    }
+
+    @Override
+    public String getRegistrationNumber() {
+        return registrationNumber;
+    }
+
+    @Override
+    public String getOwnerName() {
+        return ownerName;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void gps() {
+        System.out.println("GPS is now active in the Logan vehicle.");
+    }
+}
+Ford.java
+   package com.automobile.fourwheeler;
+
+import com.automobile.Vehicle;
+
+public class Ford extends Vehicle {
+    private String modelName;
+    private String registrationNumber;
+    private String ownerName;
+    private int speed;
+
+    public Ford(String modelName, String registrationNumber, String ownerName, int speed) {
+        this.modelName = modelName;
+        this.registrationNumber = registrationNumber;
+        this.ownerName = ownerName;
+        this.speed = speed;
+    }
+
+    @Override
+    public String getModelName() {
+        return modelName;
+    }
+
+    @Override
+    public String getRegistrationNumber() {
+        return registrationNumber;
+    }
+
+    @Override
+    public String getOwnerName() {
+        return ownerName;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void tempControl() {
+        System.out.println("Temperature control is now active in the Ford vehicle.");
+    }
+}
+TestVehicle.java
+    import com.automobile.twowheeler.Hero;
+import com.automobile.twowheeler.Honda;
+import com.automobile.fourwheeler.Logan;
+import com.automobile.fourwheeler.Ford;
+
+public class TestVehicle {
+    public static void main(String[] args) {
+        // Create instances of Hero and Honda
+        Hero hero = new Hero("Hero Splendor", "KA01AB1234", "John Doe", 60);
+        Honda honda = new Honda("Honda Shine", "KA01CD5678", "Jane Doe", 70);
+
+        // Create instances of Logan and Ford
+        Logan logan = new Logan("Logan X", "KA02EF1234", "Alice", 80);
+        Ford ford = new Ford("Ford Fiesta", "KA02GH5678", "Bob", 90);
+
+        // Test Hero methods
+        System.out.println("Hero Model: " + hero.getModelName());
+        System.out.println("Hero Registration Number: " + hero.getRegistrationNumber());
+        System.out.println("Hero Owner: " + hero.getOwnerName());
+        System.out.println("Hero Speed: " + hero.getSpeed());
+        hero.radio();
+
+        System.out.println();
+
+        // Test Honda methods
+        System.out.println("Honda Model: " + honda.getModelName());
+        System.out.println("Honda Registration Number: " + honda.getRegistrationNumber());
+        System.out.println("Honda Owner: " + honda.getOwnerName());
+        System.out.println("Honda Speed: " + honda.getSpeed());
+        honda.cdplayer();
+
+        System.out.println();
+
+        // Test Logan methods
+        System.out.println("Logan Model: " + logan.getModelName());
+        System.out.println("Logan Registration Number: " + logan.getRegistrationNumber());
+        System.out.println("Logan Owner: " + logan.getOwnerName());
+        System.out.println("Logan Speed: " + logan.getSpeed());
+        logan.gps();
+
+        System.out.println();
+        
+        // Test Ford methods
+        System.out.println("Ford Model: " + ford.getModelName());
+        System.out.println("Ford Registration Number: " + ford.getRegistrationNumber());
+        System.out.println("Ford Owner: " + ford.getOwnerName());
+        System.out.println("Ford Speed: " + ford.getSpeed());
+        ford.tempControl();
+    }
+}
