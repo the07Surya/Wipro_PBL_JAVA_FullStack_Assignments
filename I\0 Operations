@@ -1,0 +1,103 @@
+1.import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class CharacterCounter {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the file name:");
+        String fileName = scanner.nextLine();
+        System.out.println("Enter the character to be counted:");
+        char targetChar = scanner.nextLine().toLowerCase().charAt(0);
+
+        int count = 0;
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            int c;
+            while ((c = reader.read()) != -1) {
+                // Convert the character to lowercase for case-insensitive comparison
+                char currentChar = Character.toLowerCase((char) c);
+                if (currentChar == targetChar) {
+                    count++;
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading the file: " + e.getMessage());
+            return;
+        }
+        System.out.printf("File %s has %d instances of letter '%c'.%n", fileName, count, targetChar);
+    }
+}
+2. import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class FileCopy {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the input file name:");
+        String inputFileName = scanner.nextLine();
+
+        System.out.println("Enter the output file name:");
+        String outputFileName = scanner.nextLine();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(inputFileName));
+             BufferedWriter writer = new BufferedWriter(new FileWriter(outputFileName))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                writer.write(line);
+                writer.newLine(); // Add newline after each line
+            }
+
+            System.out.println("File is copied.");
+        } catch (IOException e) {
+            System.err.println("Error copying the file: " + e.getMessage());
+        }
+    }
+}
+3. import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Map;
+import java.util.TreeMap;
+
+public class FileWordCount {
+    public static void main(String[] args) {
+        // Check if the correct number of arguments is passed
+        if (args.length != 2) {
+            System.out.println("Usage: Java FileWordCount inputFile.txt outputFile.txt");
+            return;
+        }
+
+        String inputFile = args[0];
+        String outputFile = args[1];
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+             BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
+
+            Map<String, Integer> wordCountMap = new TreeMap<>();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] words = line.split(" ");
+                for (String word : words) {
+                    word = word.toLowerCase();
+                    wordCountMap.put(word, wordCountMap.getOrDefault(word, 0) + 1);
+                }
+            }
+            for (Map.Entry<String, Integer> entry : wordCountMap.entrySet()) {
+                writer.write(entry.getKey() + ": " + entry.getValue());
+                writer.newLine();
+            }
+
+            System.out.println("Word count completed. Results written to " + outputFile);
+        } catch (IOException e) {
+            System.err.println("Error reading/writing file: " + e.getMessage());
+        }
+    }
+}
