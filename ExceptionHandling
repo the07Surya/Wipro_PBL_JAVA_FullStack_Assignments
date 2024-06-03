@@ -1,0 +1,231 @@
+1. import java.util.Scanner;
+
+public class ArrayElementAccess {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        try {
+            System.out.println("Enter the number of elements in the array");
+            int numberOfElements = Integer.parseInt(scanner.nextLine());
+            int[] array = new int[numberOfElements];
+
+            System.out.println("Enter the elements in the array");
+            for (int i = 0; i < numberOfElements; i++) {
+                array[i] = Integer.parseInt(scanner.nextLine());
+            }
+
+            System.out.println("Enter the index of the array element you want to access");
+            int index = Integer.parseInt(scanner.nextLine());
+
+            System.out.println("The array element at index " + index + " is " + array[index]);
+            System.out.println("The array element successfully accessed.");
+
+        } catch (NumberFormatException e) {
+            System.out.println("java.lang.NumberFormatException: " + e.getMessage());
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("java.lang.ArrayIndexOutOfBoundsException: " + e.getMessage());
+        } finally {
+            scanner.close();
+        }
+    }
+}
+2.public class MathOperation {
+    public static void main(String[] args) {
+        try {
+
+            if (args.length != 5) {
+                throw new IllegalArgumentException("Exactly 5 integers are required.");
+            }
+
+            int[] numbers = new int[5];
+
+            for (int i = 0; i < 5; i++) {
+                numbers[i] = Integer.parseInt(args[i]);
+            }
+
+            int sum = 0;
+            for (int number : numbers) {
+                sum += number;
+            }
+
+            double average = (double) sum / numbers.length;
+            System.out.println("Sum: " + sum);
+            System.out.println("Average: " + average);
+
+        } catch (NumberFormatException e) {
+            System.out.println("java.lang.NumberFormatException: One or more arguments are not valid integers.");
+        } catch (ArithmeticException e) {
+            System.out.println("java.lang.ArithmeticException: Arithmetic error occurred.");
+        } catch (IllegalArgumentException e) {
+            System.out.println("java.lang.IllegalArgumentException: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("An unexpected error occurred: " + e.getMessage());
+        }
+    }
+}
+3.import java.util.Scanner;
+
+// Custom exception class for negative values
+class NegativeValueException extends Exception {
+    public NegativeValueException(String message) {
+        super(message);
+    }
+}
+
+// Custom exception class for values out of range
+class ValueOutOfRangeException extends Exception {
+    public ValueOutOfRangeException(String message) {
+        super(message);
+    }
+}
+
+// Class to represent a student
+class Student {
+    private String name;
+    private int[] marks;
+
+    public Student(String name, int[] marks) {
+        this.name = name;
+        this.marks = marks;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int[] getMarks() {
+        return marks;
+    }
+}
+
+public class StudentMarks {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        try {
+
+            System.out.println("Enter details for student 1:");
+            Student student1 = getStudentDetails(scanner);
+
+            System.out.println("\nEnter details for student 2:");
+            Student student2 = getStudentDetails(scanner);
+
+            displayAverageMarks(student1);
+            displayAverageMarks(student2);
+
+        } catch (NumberFormatException e) {
+            System.out.println("NumberFormatException: Please enter valid integer values.");
+        } catch (NegativeValueException e) {
+            System.out.println("NegativeValueException: " + e.getMessage());
+        } catch (ValueOutOfRangeException e) {
+            System.out.println("ValueOutOfRangeException: " + e.getMessage());
+        } finally {
+            scanner.close();
+        }
+    }
+
+    private static Student getStudentDetails(Scanner scanner)
+            throws NumberFormatException, NegativeValueException, ValueOutOfRangeException {
+        System.out.print("Enter student name: ");
+        String name = scanner.nextLine();
+
+        int[] marks = new int[3];
+        for (int i = 0; i < 3; i++) {
+            System.out.print("Enter marks for subject " + (i + 1) + ": ");
+            int mark = Integer.parseInt(scanner.nextLine());
+
+            if (mark < 0) {
+                throw new NegativeValueException("Marks cannot be negative.");
+            } else if (mark < 0 || mark > 100) {
+                throw new ValueOutOfRangeException("Marks should be in the range of 0-100.");
+            }
+
+            marks[i] = mark;
+        }
+
+        return new Student(name, marks);
+    }
+
+  
+    private static void displayAverageMarks(Student student) {
+        int[] marks = student.getMarks();
+        int sum = 0;
+        for (int mark : marks) {
+            sum += mark;
+        }
+        double average = (double) sum / marks.length;
+        System.out.println("\nAverage marks of " + student.getName() + ": " + average);
+    }
+}
+4.
+class InvalidCountryException extends Exception {
+    // Step 2: Overload the respective constructors
+    public InvalidCountryException() {
+        super();
+    }
+
+    public InvalidCountryException(String message) {
+        super(message);
+    }
+}
+
+public class UserRegistration {
+    // Add the method registerUser
+    public static void registerUser(String username, String userCountry) throws InvalidCountryException {
+        // Implementation
+        if (!userCountry.equals("India")) {
+            // If userCountry is not equal to "India", throw InvalidCountryException
+            throw new InvalidCountryException("User Outside India cannot be registered");
+        } else {
+            // If userCountry is equal to "India", print registration message
+            System.out.println("User registration done successfully");
+        }
+    }
+
+    
+    public static void main(String[] args) {
+        // Invoke the method registerUser with the specified data
+        try {
+            registerUser("Mickey", "US"); // Example 1
+        } catch (InvalidCountryException e) {
+            // Catch the InvalidCountryException and print the message
+            System.out.println("Exception: " + e.getMessage());
+        }
+
+        try {
+            registerUser("Mini", "India"); // Example 2
+        } catch (InvalidCountryException e) {
+            // Catch the InvalidCountryException and print the message
+            System.out.println("Exception: " + e.getMessage());
+        }
+    }
+}
+5.public class ValidateAge {
+    public static void main(String[] args) {
+        if (args.length != 2) {
+            System.out.println("Usage: java ValidateAge <name> <age>");
+            System.exit(1);
+        }
+
+        String name = args[0];
+        int age;
+
+        try {
+  
+            age = Integer.parseInt(args[1]);
+
+            if (age <= 18 || age >= 60) {
+                System.out.println("Error: Age must be between 18 and 60.");
+                // Exit gracefully
+                System.exit(1);
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Age must be a valid integer.");
+            // Exit gracefully
+            System.exit(1);
+        }
+
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+    }
+}
