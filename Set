@@ -1,0 +1,113 @@
+1. import java.util.HashSet;
+public class CountryManager {
+    private HashSet<String> countryHashSet;
+
+    public CountryManager() {
+        this.countryHashSet = new HashSet<>();
+    }
+    public HashSet<String> saveCountryNames(String countryName) {
+        countryHashSet.add(countryName);
+        return countryHashSet;
+    }
+    public String getCountry(String countryName) {
+        for (String country : countryHashSet) {
+            if (country.equals(countryName)) {
+                return country;
+            }
+        }
+        return null;
+    }
+
+    public static void main(String[] args) {
+        CountryManager countryManager = new CountryManager();
+        countryManager.saveCountryNames("USA");
+        countryManager.saveCountryNames("Canada");
+        countryManager.saveCountryNames("India");
+        String country1 = countryManager.getCountry("USA");
+        String country2 = countryManager.getCountry("UK");
+        System.out.println("Country 1: " + country1); // Output: USA
+        System.out.println("Country 2: " + country2); // Output: null
+    }
+}
+
+2. import java.util.HashSet;
+import java.util.Iterator;
+
+public class EmployeeHashSet {
+    public static void main(String[] args) {
+        HashSet<String> employeeNames = new HashSet<>();
+        employeeNames.add("John Doe");
+        employeeNames.add("Jane Smith");
+        employeeNames.add("Alice Johnson");
+        employeeNames.add("Bob Brown");
+        Iterator<String> iterator = employeeNames.iterator();
+        System.out.println("Employee names retrieved using Iterator:");
+        while (iterator.hasNext()) {
+            String employeeName = iterator.next();
+            System.out.println(employeeName);
+        }
+    }
+}
+3. import java.util.TreeSet;
+import java.util.Iterator;
+public class TreeSetOperations {
+    public static void main(String[] args) {
+        TreeSet<String> treeSet = new TreeSet<>();
+        treeSet.add("Apple");
+        treeSet.add("Banana");
+        treeSet.add("Orange");
+        treeSet.add("Grapes");
+
+        // a) Reverse the elements of the Collection
+        TreeSet<String> reversedTreeSet = (TreeSet<String>) treeSet.descendingSet();
+        System.out.println("Reversed TreeSet: " + reversedTreeSet);
+
+        // b) Iterate the elements of the TreeSet using Iterator
+        System.out.println("Iterating TreeSet using Iterator:");
+        Iterator<String> iterator = treeSet.iterator();
+        while (iterator.hasNext()) {
+            String element = iterator.next();
+            System.out.println(element);
+        }
+
+        // c) Check if a particular element exists or not
+        String searchElement = "Banana";
+        if (treeSet.contains(searchElement)) {
+            System.out.println(searchElement + " exists in the TreeSet.");
+        } else {
+            System.out.println(searchElement + " does not exist in the TreeSet.");
+        }
+    }
+}
+4.  import java.util.TreeSet;
+public class CountryManager {
+    private TreeSet<String> countrySet;
+
+    public CountryManager() {
+        this.countrySet = new TreeSet<>();
+    }
+    public TreeSet<String> saveCountryNames(String countryName) {
+        countrySet.add(countryName);
+        return countrySet;
+    }
+
+    public String getCountry(String countryName) {
+        for (String country : countrySet) {
+            if (country.equals(countryName)) {
+                return country;
+            }
+        }
+        return null;
+    }
+
+    public static void main(String[] args) {
+        CountryManager countryManager = new CountryManager();
+        countryManager.saveCountryNames("USA");
+        countryManager.saveCountryNames("Canada");
+        countryManager.saveCountryNames("India");
+        String country1 = countryManager.getCountry("USA");
+        String country2 = countryManager.getCountry("UK");
+        System.out.println("Country 1: " + country1); // Output: USA
+        System.out.println("Country 2: " + country2); // Output: null
+    }
+}
