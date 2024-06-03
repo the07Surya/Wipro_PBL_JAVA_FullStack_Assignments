@@ -1,0 +1,277 @@
+1. import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+        List<String> months = new ArrayList<>();
+        months.add("January");
+        months.add("February");
+        months.add("March");
+        months.add("April");
+        months.add("May");
+        months.add("June");
+        months.add("July");
+        months.add("August");
+        months.add("September");
+        months.add("October");
+        months.add("November");
+        months.add("December");
+        System.out.println("Months of the year:");
+        for (String month : months) {
+            System.out.println(month);
+        }
+    }
+}
+2. import java.util.ArrayList;
+
+class Employee {
+    private int empId;
+    private String employeeName;
+    private String email;
+    private String gender;
+    private float salary;
+
+    public Employee(int empId, String employeeName, String email, String gender, float salary) {
+        this.empId = empId;
+        this.employeeName = employeeName;
+        this.email = email;
+        this.gender = gender;
+        this.salary = salary;
+    }
+    public int getEmpId() {
+        return empId;
+    }
+
+    public void setEmpId(int empId) {
+        this.empId = empId;
+    }
+
+    public String getEmployeeName() {
+        return employeeName;
+    }
+
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public float getSalary() {
+        return salary;
+    }
+
+    public void setSalary(float salary) {
+        this.salary = salary;
+    }
+    public void getEmployeeDetails() {
+        System.out.println("Employee ID: " + empId);
+        System.out.println("Name: " + employeeName);
+        System.out.println("Email: " + email);
+        System.out.println("Gender: " + gender);
+        System.out.println("Salary: " + salary);
+    }
+}
+
+class EmployeeDB {
+    private ArrayList<Employee> list = new ArrayList<>();
+    public boolean addEmployee(Employee e) {
+        return list.add(e);
+    }
+    public boolean deleteEmployee(int empId) {
+        for (Employee emp : list) {
+            if (emp.getEmpId() == empId) {
+                return list.remove(emp);
+            }
+        }
+        return false; 
+    }
+    public String showPayslip(int empId) {
+        for (Employee emp : list) {
+            if (emp.getEmpId() == empId) {
+                return "Payslip for Employee ID " + empId + ":\n" +
+                        "Employee Name: " + emp.getEmployeeName() + "\n" +
+                        "Salary: " + emp.getSalary();
+            }
+        }
+        return "Employee not found";
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Employee emp1 = new Employee(101, "John Doe", "john@example.com", "Male", 50000.0f);
+        Employee emp2 = new Employee(102, "Jane Smith", "jane@example.com", "Female", 60000.0f);
+        EmployeeDB employeeDB = new EmployeeDB();
+        employeeDB.addEmployee(emp1);
+        employeeDB.addEmployee(emp2);
+        System.out.println("Employee Details:");
+        emp1.getEmployeeDetails();
+        System.out.println();
+        emp2.getEmployeeDetails();
+        System.out.println();
+        employeeDB.deleteEmployee(101);
+        System.out.println(employeeDB.showPayslip(102));
+    }
+}
+3. import java.util.ArrayList;
+import java.util.Iterator;
+
+class StringArrayList {
+    private ArrayList<String> stringList;
+    public StringArrayList() {
+        stringList = new ArrayList<>();
+    }
+    public void addString(String str) {
+        stringList.add(str);
+    }
+    public void printAll() {
+        Iterator<String> iterator = stringList.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        StringArrayList list = new StringArrayList();
+        list.addString("Hello");
+        list.addString("World");
+        list.addString("Java");
+        list.addString("Programming");
+        System.out.println("All elements of the list:");
+        list.printAll();
+    }
+}
+4.  import java.util.ArrayList;
+
+public class NumberArrayList {
+    private ArrayList<Number> numberList;
+
+    public NumberArrayList() {
+        numberList = new ArrayList<>();
+    }
+    public void addNumber(Number num) {
+        numberList.add(num);
+    }
+
+    public void printAll() {
+        for (Number num : numberList) {
+            System.out.println(num);
+        }
+    }
+
+    public static void main(String[] args) {
+        // Create NumberArrayList object
+        NumberArrayList list = new NumberArrayList();
+        list.addNumber(10);             // int
+        list.addNumber(3.14f);          // float
+        list.addNumber(5.67);           // double
+        list.addNumber(100L);           // long
+        list.addNumber(2.71828);        // double
+        System.out.println("All elements of the list:");
+        list.printAll();
+    }
+}
+5. import java.util.LinkedList;
+
+public class Main {
+    public static void main(String[] args) {
+        LinkedList<String> months = new LinkedList<>();
+        months.add("January");
+        months.add("February");
+        months.add("March");
+        months.add("April");
+        months.add("May");
+        months.add("June");
+        months.add("July");
+        months.add("August");
+        months.add("September");
+        months.add("October");
+        months.add("November");
+        months.add("December");
+        System.out.println("Months of the year:");
+        for (String month : months) {
+            System.out.println(month);
+        }
+    }
+}
+6. import java.util.Vector;
+
+public class MonthList {
+    public static void main(String[] args) {
+        Vector<String> monthList = new Vector<>();
+        monthList.add("January");
+        monthList.add("February");
+        monthList.add("March");
+        monthList.add("April");
+        monthList.add("May");
+        monthList.add("June");
+        monthList.add("July");
+        monthList.add("August");
+        monthList.add("September");
+        monthList.add("October");
+        monthList.add("November");
+        monthList.add("December");
+        System.out.println("Months of the year:");
+        for (String month : monthList) {
+            System.out.println(month);
+        }
+    }
+}
+7. import java.util.Vector;
+import java.util.Iterator;
+import java.util.Enumeration;
+
+class Employee {
+    private int id;
+    private String name;
+
+    public Employee(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+
+public class EmployeeList {
+    public static void main(String[] args) {
+        Vector<Employee> employeeVector = new Vector<>();
+        employeeVector.add(new Employee(1, "John"));
+        employeeVector.add(new Employee(2, "Jane"));
+        employeeVector.add(new Employee(3, "Doe"));
+        System.out.println("Using Iterator:");
+        Iterator<Employee> iterator = employeeVector.iterator();
+        while (iterator.hasNext()) {
+            Employee employee = iterator.next();
+            System.out.println("ID: " + employee.getId() + ", Name: " + employee.getName());
+        }
+        System.out.println("\nUsing Enumeration:");
+        Enumeration<Employee> enumeration = employeeVector.elements();
+        while (enumeration.hasMoreElements()) {
+            Employee employee = enumeration.nextElement();
+            System.out.println("ID: " + employee.getId() + ", Name: " + employee.getName());
+        }
+    }
+}
