@@ -1,0 +1,253 @@
+1. import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.Set;
+
+public class CountryCapitalManager {
+    private HashMap<String, String> countryCapitalMap;
+
+    public CountryCapitalManager() {
+        this.countryCapitalMap = new HashMap<>();
+    }
+    public HashMap<String, String> saveCountryCapital(String countryName, String capital) {
+        countryCapitalMap.put(countryName, capital);
+        return countryCapitalMap;
+    }
+    public String getCapital(String countryName) {
+        return countryCapitalMap.get(countryName);
+    }
+    public String getCountry(String capitalName) {
+        for (Map.Entry<String, String> entry : countryCapitalMap.entrySet()) {
+            if (entry.getValue().equals(capitalName)) {
+                return entry.getKey();
+            }
+        }
+        return null;
+    }
+    public HashMap<String, String> createCapitalCountryMap() {
+        HashMap<String, String> capitalCountryMap = new HashMap<>();
+        for (Map.Entry<String, String> entry : countryCapitalMap.entrySet()) {
+            capitalCountryMap.put(entry.getValue(), entry.getKey());
+        }
+        return capitalCountryMap;
+    }
+    public ArrayList<String> getAllCountryNames() {
+        ArrayList<String> countryNames = new ArrayList<>();
+        Set<String> keys = countryCapitalMap.keySet();
+        countryNames.addAll(keys);
+        return countryNames;
+    }
+    public static void main(String[] args) {
+        CountryCapitalManager manager = new CountryCapitalManager();
+
+        manager.saveCountryCapital("India", "Delhi");
+        manager.saveCountryCapital("Japan", "Tokyo");
+        System.out.println("Capital of India: " + manager.getCapital("India")); // Output: Delhi
+        System.out.println("Country with capital Tokyo: " + manager.getCountry("Tokyo")); // Output: Japan
+        System.out.println("Capital-Country Map: " + manager.createCapitalCountryMap()); // Output: {Delhi=India, Tokyo=Japan}
+        System.out.println("All Country Names: " + manager.getAllCountryNames()); // Output: [India, Japan]
+    }
+}
+2. import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+public class HashMapOperations {
+    public static void main(String[] args) {
+        HashMap<Integer, String> hashMap = new HashMap<>();
+        hashMap.put(1, "Apple");
+        hashMap.put(2, "Banana");
+        hashMap.put(3, "Orange");
+        hashMap.put(4, "Grapes");
+
+        // a) Check if a particular key exists or not
+        int keyToCheck = 2;
+        if (hashMap.containsKey(keyToCheck)) {
+            System.out.println("Key " + keyToCheck + " exists in the HashMap.");
+        } else {
+            System.out.println("Key " + keyToCheck + " does not exist in the HashMap.");
+        }
+
+        // b) Check if a particular value exists or not
+        String valueToCheck = "Orange";
+        if (hashMap.containsValue(valueToCheck)) {
+            System.out.println("Value '" + valueToCheck + "' exists in the HashMap.");
+        } else {
+            System.out.println("Value '" + valueToCheck + "' does not exist in the HashMap.");
+        }
+
+        // c) Use Iterator to loop through the map
+        System.out.println("Looping through the HashMap using Iterator:");
+        Iterator<Map.Entry<Integer, String>> iterator = hashMap.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<Integer, String> entry = iterator.next();
+            System.out.println("Key: " + entry.getKey() + ", Value: " + entry.getValue());
+        }
+    }
+}
+
+3. import java.util.Properties;
+import java.util.Iterator;
+import java.util.Set;
+public class StateCapital {
+    public static void main(String[] args) {
+        Properties stateCapital = new Properties();
+        stateCapital.setProperty("Maharashtra", "Mumbai");
+        stateCapital.setProperty("Tamil Nadu", "Chennai");
+        stateCapital.setProperty("Karnataka", "Bangalore");
+        stateCapital.setProperty("Telangana", "Hyderabad");
+        stateCapital.setProperty("Uttar Pradesh", "Lucknow");
+        System.out.println("List of States and Capitals:");
+        Set<Object> states = stateCapital.keySet();
+        Iterator<Object> iterator = states.iterator();
+        while (iterator.hasNext()) {
+            Object state = iterator.next();
+            Object capital = stateCapital.get(state);
+            System.out.println("State: " + state + ", Capital: " + capital);
+        }
+    }
+}
+
+4. import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+public class ContactList {
+    public static void main(String[] args) {
+        HashMap<String, Integer> contactList = new HashMap<>();
+        contactList.put("John", 1234567890);
+        contactList.put("Jane", 987654321);
+        contactList.put("Alice", 1111222233);
+        contactList.put("Bob", 4444555566);
+
+        // a) Check if a particular key exists or not
+        String nameToCheck = "Jane";
+        if (contactList.containsKey(nameToCheck)) {
+            System.out.println(nameToCheck + "'s phone number exists in the ContactList.");
+        } else {
+            System.out.println(nameToCheck + "'s phone number does not exist in the ContactList.");
+        }
+
+        // b) Check if a particular value exists or not
+        int phoneNumberToCheck = 1111222233;
+        if (contactList.containsValue(phoneNumberToCheck)) {
+            System.out.println("Phone number " + phoneNumberToCheck + " exists in the ContactList.");
+        } else {
+            System.out.println("Phone number " + phoneNumberToCheck + " does not exist in the ContactList.");
+        }
+
+        // c) Use Iterator to loop through the map
+        System.out.println("Looping through the ContactList using Iterator:");
+        Set<Map.Entry<String, Integer>> entrySet = contactList.entrySet();
+        Iterator<Map.Entry<String, Integer>> iterator = entrySet.iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<String, Integer> entry = iterator.next();
+            System.out.println("Name: " + entry.getKey() + ", Phone number: " + entry.getValue());
+        }
+    }
+}
+5. import java.util.ArrayList;
+import java.util.TreeMap;
+import java.util.Map;
+import java.util.Iterator;
+public class CountryCapitalManager {
+    private TreeMap<String, String> countryCapitalMap;
+    public CountryCapitalManager() {
+        this.countryCapitalMap = new TreeMap<>();
+    }
+    public TreeMap<String, String> saveCountryCapital(String countryName, String capital) {
+        countryCapitalMap.put(countryName, capital);
+        return countryCapitalMap;
+    }
+    public String getCapital(String countryName) {
+        return countryCapitalMap.get(countryName);
+    }
+    public String getCountry(String capitalName) {
+        for (Map.Entry<String, String> entry : countryCapitalMap.entrySet()) {
+            if (entry.getValue().equals(capitalName)) {
+                return entry.getKey();
+            }
+        }
+        return null;
+    }
+    public TreeMap<String, String> createCapitalCountryMap() {
+        TreeMap<String, String> capitalCountryMap = new TreeMap<>();
+        for (Map.Entry<String, String> entry : countryCapitalMap.entrySet()) {
+            capitalCountryMap.put(entry.getValue(), entry.getKey());
+        }
+        return capitalCountryMap;
+    }
+    public ArrayList<String> getAllCountryNames() {
+        ArrayList<String> countryNames = new ArrayList<>();
+        for (String country : countryCapitalMap.keySet()) {
+            countryNames.add(country);
+        }
+        return countryNames;
+    }
+
+    public static void main(String[] args) {
+        CountryCapitalManager manager = new CountryCapitalManager();
+        manager.saveCountryCapital("India", "Delhi");
+        manager.saveCountryCapital("Japan", "Tokyo");
+        System.out.println("Capital of India: " + manager.getCapital("India")); // Output: Delhi
+        System.out.println("Country with capital Tokyo: " + manager.getCountry("Tokyo")); // Output: Japan
+        System.out.println("Capital-Country Map: " + manager.createCapitalCountryMap()); // Output: {Delhi=India, Tokyo=Japan}
+        System.out.println("All Country Names: " + manager.getAllCountryNames()); // Output: [India, Japan]
+    }
+}
+6. import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.Enumeration;
+import java.util.Map;
+
+public class CountryCapitalManager {
+    private Hashtable<String, String> countryCapitalMap;
+
+    public CountryCapitalManager() {
+        this.countryCapitalMap = new Hashtable<>();
+    }
+    public Hashtable<String, String> saveCountryCapital(String countryName, String capital) {
+        countryCapitalMap.put(countryName, capital);
+        return countryCapitalMap;
+    }
+    public String getCapital(String countryName) {
+        return countryCapitalMap.get(countryName);
+    }
+    public String getCountry(String capitalName) {
+        Enumeration<String> keys = countryCapitalMap.keys();
+        while (keys.hasMoreElements()) {
+            String country = keys.nextElement();
+            if (countryCapitalMap.get(country).equals(capitalName)) {
+                return country;
+            }
+        }
+        return null;
+    }
+    public Hashtable<String, String> createCapitalCountryMap() {
+        Hashtable<String, String> capitalCountryMap = new Hashtable<>();
+        Enumeration<String> keys = countryCapitalMap.keys();
+        while (keys.hasMoreElements()) {
+            String country = keys.nextElement();
+            String capital = countryCapitalMap.get(country);
+            capitalCountryMap.put(capital, country);
+        }
+        return capitalCountryMap;
+    }
+    public ArrayList<String> getAllCountryNames() {
+        ArrayList<String> countryNames = new ArrayList<>();
+        Enumeration<String> keys = countryCapitalMap.keys();
+        while (keys.hasMoreElements()) {
+            countryNames.add(keys.nextElement());
+        }
+        return countryNames;
+    }
+
+    public static void main(String[] args) {
+        CountryCapitalManager manager = new CountryCapitalManager();
+        manager.saveCountryCapital("India", "Delhi");
+        manager.saveCountryCapital("Japan", "Tokyo");
+        System.out.println("Capital of India: " + manager.getCapital("India")); // Output: Delhi
+        System.out.println("Country with capital Tokyo: " + manager.getCountry("Tokyo")); // Output: Japan
+        System.out.println("Capital-Country Map: " + manager.createCapitalCountryMap()); // Output: {Delhi=India, Tokyo=Japan}
+        System.out.println("All Country Names: " + manager.getAllCountryNames()); // Output: [India, Japan]
+    }
+}
