@@ -1,0 +1,139 @@
+1.public class NumericWrapperRanges {
+    public static void main(String[] args) {
+        System.out.println("Byte range:");
+        System.out.println("min: " + Byte.MIN_VALUE);
+        System.out.println("max: " + Byte.MAX_VALUE);
+
+        System.out.println("\nShort range:");
+        System.out.println("min: " + Short.MIN_VALUE);
+        System.out.println("max: " + Short.MAX_VALUE);
+
+        System.out.println("\nInteger range:");
+        System.out.println("min: " + Integer.MIN_VALUE);
+        System.out.println("max: " + Integer.MAX_VALUE);
+
+        System.out.println("\nLong range:");
+        System.out.println("min: " + Long.MIN_VALUE);
+        System.out.println("max: " + Long.MAX_VALUE);
+
+        System.out.println("\nFloat range:");
+        System.out.println("min: " + Float.MIN_VALUE);
+        System.out.println("max: " + Float.MAX_VALUE);
+
+        System.out.println("\nDouble range:");
+        System.out.println("min: " + Double.MIN_VALUE);
+        System.out.println("max: " + Double.MAX_VALUE);
+    }
+}
+2. public class NumberConverter {
+    public static void main(String[] args) {
+        if (args.length != 1) {
+            System.out.println("Usage: java NumberConverter <number>");
+            return;
+        }
+        int number;
+        try {
+            number = Integer.parseInt(args[0]);
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Invalid number format.");
+            return;
+        }
+
+        System.out.println("Given Number: " + number);
+
+        System.out.println("Binary equivalent: " + Integer.toBinaryString(number));
+
+        System.out.println("Octal equivalent: " + Integer.toOctalString(number));
+
+        System.out.println("Hexadecimal equivalent: " + Integer.toHexString(number));
+    }
+}
+3. import java.util.Scanner;
+
+public class BinaryConverter {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer number between 3 and 255: ");
+        int number = scanner.nextInt();
+        if (number < 3 || number > 255) {
+            System.out.println("Invalid input. Please enter a number between 3 and 255.");
+            return;
+        }
+        String binary = String.format("%8s", Integer.toBinaryString(number)).replace(' ', '0');
+
+        System.out.println("Binary representation: " + binary);
+    }
+}
+4. class Employee implements Cloneable {
+    private String name;
+    private int age;
+    private double salary;
+
+    // Constructor
+    public Employee(String name, int age, double salary) {
+        this.name = name;
+        this.age = age;
+        this.salary = salary;
+    }
+
+    // Getters and setters
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create an employee object
+        Employee originalEmployee = new Employee("John", 30, 50000.0);
+
+        // Clone the original employee
+        Employee clonedEmployee = null;
+        try {
+            clonedEmployee = (Employee) originalEmployee.clone();
+        } catch (CloneNotSupportedException e) {
+            System.out.println("Cloning not supported for Employee class.");
+            e.printStackTrace();
+        }
+
+        originalEmployee.setName("Jane");
+        originalEmployee.setAge(35);
+        originalEmployee.setSalary(60000.0);
+
+        System.out.println("Original Employee:");
+        System.out.println("Name: " + originalEmployee.getName());
+        System.out.println("Age: " + originalEmployee.getAge());
+        System.out.println("Salary: " + originalEmployee.getSalary());
+
+        System.out.println("\nCloned Employee:");
+        System.out.println("Name: " + clonedEmployee.getName());
+        System.out.println("Age: " + clonedEmployee.getAge());
+        System.out.println("Salary: " + clonedEmployee.getSalary());
+    }
+}
